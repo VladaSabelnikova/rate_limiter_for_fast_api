@@ -1,0 +1,13 @@
+services:
+    redis:
+        image: redis:6.2.6
+        container_name: redis
+        volumes:
+            - redis_data:/data
+            - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+        expose:
+            - 6379
+        command: redis-server /usr/local/etc/redis/redis.conf
+
+volumes:
+    redis_data:
