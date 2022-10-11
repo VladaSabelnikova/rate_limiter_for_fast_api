@@ -3,7 +3,7 @@
 from pydantic import BaseSettings, BaseModel
 
 
-class ConfigForModels(BaseSettings):  # TODO: Точно тут?
+class EnvBaseSettings(BaseSettings):
 
     """Класс с конфигом для всех моделей."""
 
@@ -36,7 +36,7 @@ class APISettings(BaseModel):
     port: int
 
 
-class Config(ConfigForModels):
+class Config(EnvBaseSettings):
 
     """Класс с конфигурацией проекта."""
 

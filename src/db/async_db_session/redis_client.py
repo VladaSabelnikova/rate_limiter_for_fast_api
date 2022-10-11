@@ -38,7 +38,7 @@ class AsyncRedisSession(AbstractDBSession):
 
         await self.connect.close()  # type: ignore
 
-    async def get_connect(self) -> Redis:  # noqa: WPS615
+    async def get_connect(self) -> Redis:
         """
         Метод возвращает соединение.
 
