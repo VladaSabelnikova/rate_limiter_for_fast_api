@@ -17,7 +17,7 @@ app = FastAPI(
 )
 
 
-@app.get('/', dependencies=[Depends(requests_per_minute(3))])
+@app.get('/', dependencies=[Depends(requests_per_minute(config.api.rate_limit))])
 async def root() -> dict:
     """
     Demo endpoint, для демонстрации возможностей rate limiter-а.
@@ -31,7 +31,7 @@ async def root() -> dict:
 
 if __name__ == '__main__':
     uvicorn.run(
-        'main:app',
+        'http_server:app',
         host=config.api.host,
         port=config.api.port,
         log_config=LOGGING,

@@ -34,6 +34,7 @@ class APISettings(BaseModel):
 
     host: str
     port: int
+    rate_limit: int
 
 
 class Config(EnvBaseSettings):
