@@ -17,11 +17,14 @@ app = FastAPI(
 )
 
 
-@app.get('/', dependencies=[Depends(requests_per_minute(config.api.rate_limit))])
+@app.get(
+    '/',
+    dependencies=[Depends(requests_per_minute(config.api.rate_limit))]
+)
 async def root() -> dict:
     """
     Demo endpoint, для демонстрации возможностей rate limiter-а.
-    В данном случае пользователь не сможет обратиться к этому endpoint-у больше 3-х раз в минуту.
+    В данном случае пользователь не сможет обратиться к этому endpoint-у больше config.api.rate_limit раз в минуту.
 
     Returns:
         Вернёт словарь, или исключение 429, если кол-во запросов превысило лимит.
